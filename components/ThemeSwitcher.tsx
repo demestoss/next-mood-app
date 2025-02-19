@@ -22,12 +22,12 @@ export function ThemeSwitcher() {
 			isIconOnly
 			aria-label={"Theme switch"}
 			type="button"
-			size={"lg"}
+			size={"sm"}
 			variant={"bordered"}
 			radius={"full"}
 			onPress={() => setTheme(theme === "light" ? "dark" : "light")}
 		>
-			{theme === "dark" ? <Sun /> : <Moon />}
+			{theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
 		</Button>
 	);
 }
