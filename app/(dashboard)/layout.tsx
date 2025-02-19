@@ -6,7 +6,7 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
 		<div className="h-full w-full grid grid-cols-[200px_1fr]">
 			<aside className="h-full border-r border-default-100">Mood</aside>
 
-			<div>
+			<div className="flex flex-col">
 				<header className="h-[60px] border-b border-default-100">
 					<div className="px-6 flex h-full w-full items-center justify-end gap-4">
 						<ThemeSwitcher />
@@ -14,7 +14,7 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
 					</div>
 				</header>
 
-				<main>{children}</main>
+				<main className="grow">{children}</main>
 			</div>
 		</div>
 	);

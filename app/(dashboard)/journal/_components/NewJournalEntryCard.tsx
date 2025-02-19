@@ -8,7 +8,7 @@ export default function NewEntryCard() {
 			<CardBody className="h-full flex flex-row gap-6 p-2 pl-6 items-center">
 				<Plus size={32} />
 				<div className="flex flex-col gap-1">
-					<span>New Entry </span>
+					<span className="text-xl">New Entry </span>
 					<span>{new Date().toDateString()}</span>
 				</div>
 			</CardBody>
