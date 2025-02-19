@@ -13,7 +13,9 @@ export function ThemeSwitcher() {
 		setMounted(true);
 	}, []);
 
-	if (!mounted) return null;
+	if (!mounted) {
+		return <div className="h-12" />;
+	}
 
 	return (
 		<Button
