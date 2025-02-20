@@ -3,7 +3,7 @@ import { Textarea } from "@heroui/input";
 import { Spinner } from "@heroui/react";
 import type { JournalEntry } from "@prisma/client";
 import { useState, useTransition } from "react";
-import { useAutosave } from "react-autosave";
+import { useAutoSave } from "./useAutoSave";
 
 export default function Editor({
 	entry,
@@ -15,7 +15,7 @@ export default function Editor({
 	const [value, setValue] = useState(entry.content);
 	const [isPending, startTransition] = useTransition();
 
-	useAutosave({
+	useAutoSave({
 		data: value,
 		onSave: async (content) => {
 			startTransition(async () => {
@@ -34,10 +34,11 @@ export default function Editor({
 			<Textarea
 				className="w-full h-full"
 				classNames={{
-					inputWrapper: "grow",
+					inputWrapper: "grow border-none",
 					innerWrapper: "h-full",
 					input: "grow h-full",
 				}}
+				variant={"faded"}
 				radius={"none"}
 				disableAutosize
 				maxRows={256}
