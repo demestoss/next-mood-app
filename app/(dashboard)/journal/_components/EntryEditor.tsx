@@ -7,7 +7,7 @@ export default function EntryEditor({ entry }: { entry: JournalEntry }) {
 	return (
 		<Editor
 			entry={entry}
-			onSaveAction={async (content) => {
+			onSave={async (content) => {
 				await updateJournalEntry(entry.id, { content });
 			}}
 		/>

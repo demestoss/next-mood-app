@@ -1,7 +1,6 @@
 import { StructuredOutputParser } from "@langchain/core/output_parsers";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { ChatOpenAI } from "@langchain/openai";
-import type { JournalEntry } from "@prisma/client";
 import { z } from "zod";
 
 const parser = StructuredOutputParser.fromZodSchema(
@@ -9,9 +8,18 @@ const parser = StructuredOutputParser.fromZodSchema(
 		mood: z
 			.string()
 			.describe("the mood of the person who wrote the journal entry."),
-		summary: z.string().describe("quick summary of the entire entry."),
-		negative: z
+		summary: z
 			.string()
+			.describe(
+				"quick short summary of the entire entry with maximum 12 words.",
+			),
+		subject: z
+			.string()
+			.describe(
+				"the short informative subject of the journal entry with maximum 32 characters.",
+			),
+		negative: z
+			.boolean()
 			.describe(
 				"is the journal entry negative? (i.e. does it contain negative emotions?).",
 			),
@@ -35,20 +43,23 @@ const getPrompt = async (content: string) => {
 		},
 	});
 
-	const input = await prompt.format({
+	return prompt.format({
 		entry: content,
 	});
-	console.log(input);
-	return input;
 };
 
-export const analyze = async (entry: JournalEntry) => {
-	const input = await getPrompt(entry.content);
+export const analyze = async (content: string) => {
+	const input = await getPrompt(content);
 	const model = new ChatOpenAI({
 		temperature: 0,
 		model: "gpt-4o-mini",
 		apiKey: process.env.OPENAI_API_KEY,
 	});
 	const result = await model.invoke(input);
-	console.log(result);
+
+	try {
+		return parser.parse(`${result.content}`);
+	} catch (e) {
+		console.error(e);
+	}
 };

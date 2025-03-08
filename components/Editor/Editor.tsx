@@ -7,21 +7,24 @@ import { useAutoSave } from "./useAutoSave";
 
 export default function Editor({
 	entry,
-	onSaveAction,
+	onSave,
 }: {
 	entry: JournalEntry;
-	onSaveAction: (content: string) => Promise<void>;
+	onSave: (content: string) => Promise<void>;
 }) {
 	const [value, setValue] = useState(entry.content);
+	const [enabled, setEnabled] = useState(false);
 	const [isPending, startTransition] = useTransition();
 
 	useAutoSave({
 		data: value,
 		onSave: async (content) => {
 			startTransition(async () => {
-				await onSaveAction(content);
+				await onSave(content);
 			});
 		},
+		interval: 2000,
+		enabled,
 	});
 
 	return (
@@ -45,7 +48,10 @@ export default function Editor({
 				size={"lg"}
 				height={"100%"}
 				value={value}
-				onChange={(e) => setValue(e.target.value)}
+				onChange={(e) => {
+					setValue(e.target.value);
+					setEnabled(true);
+				}}
 			/>
 		</div>
 	);

@@ -5,27 +5,29 @@ import { unstable_cache } from "next/cache";
 import { redirect } from "next/navigation";
 import EntryEditor from "../_components/EntryEditor";
 
-const getEntry = unstable_cache(
-	async (entryId: string, userId: string) => {
-		const entry = await db.journalEntry.findUnique({
-			where: {
+async function getEntry(entryId: string, userId: string) {
+	const entry = await db.journalEntry.findUnique({
+		where: {
+			userId_id: {
 				userId,
 				id: entryId,
 			},
-		});
+		},
+		include: {
+			analysis: true,
+		},
+	});
 
-		if (!entry) {
-			redirect("/journal");
-		}
+	if (!entry) {
+		redirect("/journal");
+	}
+	return entry;
+}
 
-		return entry;
-	},
-	[],
-	{
-		tags: ["journal:entry"],
-		revalidate: 3600 * 24,
-	},
-);
+const getCachedEntry = unstable_cache(getEntry, [], {
+	tags: ["journal:entry"],
+	revalidate: 3600 * 24,
+});
 
 export default async function JournalEntryPage({
 	params,
@@ -34,7 +36,7 @@ export default async function JournalEntryPage({
 }) {
 	const entryId = (await params).id;
 	const user = await getUserByClerkId();
-	const entry = await getEntry(entryId, user.id);
+	const entry = await getCachedEntry(entryId, user.id);
 
 	return (
 		<div className="w-full h-full grid grid-cols-3">
@@ -42,7 +44,7 @@ export default async function JournalEntryPage({
 				<EntryEditor entry={entry} />
 			</div>
 			<div className="col-span-1">
-				<EntrySidebar />
+				<EntrySidebar entry={entry} />
 			</div>
 		</div>
 	);
