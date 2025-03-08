@@ -17,6 +17,7 @@
 		"@langchain/openai": "^0.4.4",
 		"@neondatabase/serverless": "^0.10.4",
 		"@prisma/client": "^6.4.0",
+		"date-fns": "^4.1.0",
 		"framer-motion": "^12.4.5",
 		"langchain": "^0.3.19",
 		"lucide-react": "^0.475.0",

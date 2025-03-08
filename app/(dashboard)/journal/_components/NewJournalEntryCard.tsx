@@ -1,4 +1,5 @@
-import { createNewJournalEntry } from "@/app/(dashboard)/journal/_actions";
+import { createNewJournalEntry } from "../_actions";
+import { formatFullDate } from "@/utils/date";
 import { Card, CardBody } from "@heroui/card";
 import { Plus } from "lucide-react";
 
@@ -9,7 +10,7 @@ export default function NewEntryCard() {
 				<Plus size={32} />
 				<div className="flex flex-col gap-1">
 					<span className="text-xl">New Entry </span>
-					<span>{new Date().toDateString()}</span>
+					<span>{formatFullDate(new Date())}</span>
 				</div>
 			</CardBody>
 		</Card>

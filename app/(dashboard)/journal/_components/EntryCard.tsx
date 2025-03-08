@@ -1,12 +1,11 @@
 import type { JournalEntryWithAnalysis } from "@/domain";
+import { formatFullDate } from "@/utils/date";
 import { Card, CardBody, CardHeader } from "@heroui/card";
 import Link from "next/link";
 
 export default function EntryCard({
 	entry,
 }: { entry: JournalEntryWithAnalysis }) {
-	const createdAt = new Date(entry.createdAt);
-
 	const analysisData = [
 		{
 			name: "subject",
@@ -22,7 +21,7 @@ export default function EntryCard({
 		<Link href={`/journal/${entry.id}`}>
 			<Card className="p-2">
 				<CardHeader className="p-2">
-					{createdAt.toDateString()}, {createdAt.toLocaleTimeString()}
+					{formatFullDate(entry.createdAt)}
 				</CardHeader>
 				<CardBody className="flex flex-col gap-2 p-2">
 					<div className="line-clamp-1">

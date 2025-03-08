@@ -1,7 +1,8 @@
 import type { JournalEntryWithAnalysis } from "@/domain";
+import { formatFullDate } from "@/utils/date";
 
 export default function EntrySidebar({
-	entry: { analysis },
+	entry: { analysis, createdAt },
 }: { entry: JournalEntryWithAnalysis }) {
 	const analysisData = [
 		{
@@ -24,6 +25,11 @@ export default function EntrySidebar({
 
 	return (
 		<div>
+			<div
+				className="px-2 py-3 border-b-1 border-b-default-200"
+			>
+				<h2 className="text-xl">{formatFullDate(createdAt)}</h2>
+			</div>
 			<div
 				className="px-6 py-10 border-b-1 border-b-default-200"
 				style={{ background: analysis?.color }}

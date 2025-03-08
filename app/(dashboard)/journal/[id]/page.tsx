@@ -1,9 +1,9 @@
-import EntrySidebar from "@/app/(dashboard)/journal/_components/EntrySidebar";
+import EntrySidebar from "@/app/(dashboard)/journal/[id]/_components/EntrySidebar";
 import db from "@/db/db";
 import { getUserByClerkId } from "@/utils/auth";
 import { unstable_cache } from "next/cache";
 import { redirect } from "next/navigation";
-import EntryEditor from "../_components/EntryEditor";
+import EntryEditor from "./_components/EntryEditor";
 
 async function getEntry(entryId: string, userId: string) {
 	const entry = await db.journalEntry.findUnique({
