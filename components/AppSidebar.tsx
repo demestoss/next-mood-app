@@ -11,7 +11,7 @@ const Sidebar = () => {
 		<Navbar className="flex flex-col grow items-start py-6 px-4 mt-6">
 			<div className="flex flex-col gap-8 items-start">
 				<NavbarBrand>
-					<span className="text-md">{'>_'} mood</span>
+					<span className="text-md">{">_"} mood</span>
 				</NavbarBrand>
 				<NavbarContent className="flex flex-col gap-4 items-start">
 					{links.map((link) => {

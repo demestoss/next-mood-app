@@ -25,9 +25,7 @@ export default function EntrySidebar({
 
 	return (
 		<div>
-			<div
-				className="px-2 py-3 border-b-1 border-b-default-200"
-			>
+			<div className="px-2 py-3 border-b-1 border-b-default-200">
 				<h2 className="text-xl">{formatFullDate(createdAt)}</h2>
 			</div>
 			<div

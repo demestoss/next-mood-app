@@ -1,7 +1,7 @@
-import { createNewJournalEntry } from "../_actions";
 import { formatFullDate } from "@/utils/date";
 import { Card, CardBody } from "@heroui/card";
 import { Plus } from "lucide-react";
+import { createNewJournalEntry } from "../../_actions";
 
 export default function NewEntryCard() {
 	return (

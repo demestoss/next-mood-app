@@ -1,6 +1,7 @@
 import AppSidebar from "@/components/AppSidebar";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { UserButton } from "@clerk/nextjs";
+import AskQuestion from "./_components/AskQuestion";
 
 export default function DashboardLayout({ children }: React.PropsWithChildren) {
 	return (
@@ -19,6 +20,8 @@ export default function DashboardLayout({ children }: React.PropsWithChildren) {
 
 				<main className="grow">{children}</main>
 			</div>
+
+			<AskQuestion />
 		</div>
 	);
 }
