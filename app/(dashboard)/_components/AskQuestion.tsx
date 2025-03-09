@@ -7,11 +7,17 @@ export default function AskQuestion() {
 		<div className="fixed bottom-4 right-2">
 			<Popover>
 				<PopoverTrigger>
-					<Button isIconOnly aria-label="Like" color="default" size="lg">
+					<Button
+						isIconOnly
+						aria-label="Like"
+						color="secondary"
+						variant="flat"
+						size="lg"
+					>
 						<Bot />
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent>
+				<PopoverContent className="h-[600px] w-96 p-0 bg-content2">
 					<AskQuestionForm />
 				</PopoverContent>
 			</Popover>

@@ -5,3 +5,8 @@ export type JournalEntryWithAnalysis = Prisma.JournalEntryGetPayload<{
 }>;
 
 export type UpdateJournalInput = Pick<JournalEntry, "content">;
+
+export type JournalEntryDocument = Pick<
+	JournalEntry,
+	"id" | "content" | "createdAt"
+>;
