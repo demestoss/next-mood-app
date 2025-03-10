@@ -19,7 +19,7 @@ export default function EntryCard({
 
 	return (
 		<Link href={`/journal/${entry.id}`}>
-			<Card className="p-2">
+			<Card className="p-2 max-w-[500px]">
 				<CardHeader className="p-2">
 					{formatFullDate(entry.createdAt)}
 				</CardHeader>

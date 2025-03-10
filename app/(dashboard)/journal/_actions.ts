@@ -19,6 +19,8 @@ export async function createNewJournalEntry() {
 					summary: "",
 					subject: "",
 					negative: false,
+					sentimentScore: 0,
+					userId: user.id,
 				},
 			},
 		},
@@ -52,6 +54,7 @@ export async function updateJournalEntry(
 			},
 			create: {
 				entryId,
+				userId: user.id,
 				...analysis,
 			},
 			update: analysis,

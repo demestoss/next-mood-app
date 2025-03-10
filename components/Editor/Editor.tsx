@@ -52,6 +52,9 @@ export default function Editor({
 					setValue(e.target.value);
 					setEnabled(true);
 				}}
+				onPaste={() => {
+					setEnabled(true);
+				}}
 			/>
 		</div>
 	);
