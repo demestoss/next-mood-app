@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 [data-overlay-container="true"] {
-	display: contents;
+    display: contents;
 }

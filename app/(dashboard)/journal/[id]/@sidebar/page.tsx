@@ -3,10 +3,10 @@ import type { EntryParams } from "../layout";
 import EntrySidebar from "./EntrySidebar";
 
 export default async function EntrySidebarPage({
-	params,
+    params,
 }: { params: EntryParams }) {
-	const entryId = (await params).id;
-	const entry = await getEntryById(entryId);
+    const entryId = (await params).id;
+    const entry = await getEntryById(entryId);
 
-	return <EntrySidebar entry={entry} />;
+    return <EntrySidebar entry={entry} />;
 }

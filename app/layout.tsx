@@ -4,32 +4,32 @@ import "./globals.css";
 import { Providers } from "@/app/providers";
 
 const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"],
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
 });
 
 const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"],
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-	title: "Mood App",
-	description: "Journal your thoughts and feelings",
+    title: "Mood App",
+    description: "Journal your thoughts and feelings",
 };
 
 export default async function RootLayout({
-	children,
+    children,
 }: Readonly<{
-	children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en" suppressHydrationWarning>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen flex flex-col`}
-			>
-				<Providers>{children}</Providers>
-			</body>
-		</html>
-	);
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased w-screen h-screen flex flex-col`}
+            >
+                <Providers>{children}</Providers>
+            </body>
+        </html>
+    );
 }

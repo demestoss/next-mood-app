@@ -2,5 +2,5 @@
 import { Spinner } from "@heroui/react";
 
 export default function Loading() {
-	return <Spinner label="Creating your experience..." />;
+    return <Spinner label="Creating your experience..." />;
 }
