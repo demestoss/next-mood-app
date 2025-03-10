@@ -4,6 +4,7 @@ import NavLink from "./NavLink";
 const links = [
 	{ name: "Home", href: "/" },
 	{ name: "Journal", href: "/journal" },
+	{ name: "History", href: "/history" },
 ];
 
 const Sidebar = () => {

@@ -1,7 +1,7 @@
 import AppSidebar from "@/components/AppSidebar";
 import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 import { UserButton } from "@clerk/nextjs";
-import AskQuestion from "./_components/AskQuestion";
+import { AskQuestion } from "@/components/AskQuestion";
 
 export default function DashboardLayout({ children }: React.PropsWithChildren) {
 	return (

@@ -24,6 +24,11 @@ const analysisSchema = z.object({
 		.describe(
 			"Is the journal entry negative? (i.e. does it contain negative emotions?)",
 		),
+	sentimentScore: z
+		.number()
+		.describe(
+			"Sentiment of the text and rated on a scale from -10 to 10, where -10 is extremely negative, 0 is neutral, and 10 is extremely positive",
+		),
 	color: z
 		.string()
 		.describe(
@@ -100,7 +105,7 @@ export const qa = async (question: string, entries: JournalEntryDocument[]) => {
 	const prompt = await getQaPrompt(relevantDocs);
 	const chain = prompt.pipe(model).pipe(new StringOutputParser());
 
-	const answer = await chain.invoke({ question });
+	const answer = await chain.stream({ question });
 
 	return answer;
 };
